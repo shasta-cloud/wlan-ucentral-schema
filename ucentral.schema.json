@@ -79,6 +79,25 @@
                 "random-password": {
                     "type": "boolean",
                     "default": false
+                },
+                "poe": {
+                  "type": "object",
+                  "properties": {
+                    "power-management": {
+                      "type": "string",
+                      "examples": [
+                        "class",
+                        "dynamic",
+                        "dynamic-priority",
+                        "static",
+                        "static-priority"
+                      ]
+                    },
+                    "usage-threshold": {
+                      "type": "number",
+                      "default": 90
+                    }
+                  }
                 }
             }
         },
