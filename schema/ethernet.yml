@@ -49,3 +49,59 @@ properties:
       type: string
       examples:
       - quality-of-service
+  poe:
+    description:
+      This section describes the ethernet poe-port configuration object.
+    type: object
+    properties:
+      admin-mode:
+        description:
+          Option to force admin state over selected port.
+          Setting to <false> immediately shuts down power.
+          Setting to <true> starts PoE hanshake
+          (Power sourcing equipment < - > Powered Device) sequence and
+          in case of success, power is being delivered to Powered Device.
+        type: boolean
+        default: false
+      do-reset:
+        description:
+          Option to force device's PSE (Power sourcing equipment)
+          to invoke a PoE port reset sequence.
+          This option can be used to reset PoE port without flickering
+          it via <admin-mode> down/up sequence.
+        type: boolean
+      detection:
+        description:
+          The detection mode is used to set the type of devices that are allowed for powering up.
+          The PoE controller can be configured to detect only IEEE standard devices
+          or pre-IEEE legacy devices (which were pre-standard - non-IEEE 802.3af compliant).
+          For example, if "dot3af" is used (PoE, max up to 15.4 W), and Powered Device drains >15.4W,
+          Power sourcing equipment won't allow this port to drain power.
+        type: string
+        examples:
+          - "2pt-dot3af"
+          - "2pt-dot3af+legacy"
+          - "4pt-dot3af"
+          - "4pt-dot3af+legacy"
+          - "dot3bt"
+          - "dot3bt+legacy"
+          - "legacy"
+        default: dot3bt
+      power-limit:
+        description:
+          Option to configure user defined absolute power limit PoE port can dain (in milliwatts, mW).
+        type: number
+        default: 99900
+      priority:
+        description:
+          Option to set priority to each PoE port. When the PoE switch has less power available
+          and more ports are required to supply power, higher priority ports are receive power
+          in preference to lower priority ports.
+        type: string
+        default: low
+        examples:
+          - "critical"
+          - "high"
+          - "medium"
+          - "low"
+
