@@ -249,8 +249,45 @@
                             "quality-of-service"
                         ]
                     }
-                }
-            }
+                },
+                "poe": {
+                  "type": "object",
+                  "properties": {
+                    "admin-mode": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "do-reset": {
+                      "type": "boolean"
+                    },
+                    "detection": {
+                      "type": "string",
+                      "examples": [
+                        "2pt-dot3af",
+                        "2pt-dot3af+legacy",
+                        "4pt-dot3af",
+                        "4pt-dot3af+legacy",
+                        "dot3bt",
+                        "dot3bt+legacy",
+                        "legacy"
+                      ],
+                      "default": "dot3bt"
+                    },
+                    "power-limit": {
+                      "type": "number"
+                    },
+                    "priority": {
+                      "type": "string",
+                      "examples": [
+                        "critical",
+                        "high",
+                        "medium",
+                        "low"
+                      ]
+                    }
+                 }
+              }
+           }
         },
         "switch": {
             "type": "object",
