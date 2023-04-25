@@ -203,6 +203,42 @@
                             "$ref": "#/$defs/globals.wireless-multimedia.profile"
                         }
                     ]
+                },
+                "ipv4-blackhole": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "prefix": {
+                                "type": "string",
+                                "format": "uc-cidr4",
+                                "examples": [
+                                    "192.168.1.0/16"
+                                ]
+                            },
+                            "vrf": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                },
+                "ipv4-unreachable": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "prefix": {
+                                "type": "string",
+                                "format": "uc-cidr4",
+                                "examples": [
+                                    "192.168.1.0/16"
+                                ]
+                            },
+                            "vrf": {
+                                "type": "number"
+                            }
+                        }
+                    }
                 }
             }
         },
