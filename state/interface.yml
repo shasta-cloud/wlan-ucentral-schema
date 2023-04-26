@@ -31,6 +31,10 @@ items:
         type: string
     ipv4_addresses:
       $ref: "https://ucentral.io/state/v1/interface/ipv4-address/"
+    public_ip:
+        type: string
+        description:
+              The public IP address of internet connection.
     ipv4_leases:
       $ref: "https://ucentral.io/state/v1/interface/ipv4-lease/"
     ipv6_addresses:
