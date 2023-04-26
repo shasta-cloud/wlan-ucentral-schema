@@ -800,18 +800,50 @@
                     ]
                 },
                 "subnet": {
-                    "type": "string",
-                    "format": "uc-cidr4",
-                    "examples": [
-                        "auto/24"
-                    ]
+                    "type": "object",
+                    "properties": {
+                        "prefix": {
+                            "type": "string",
+                            "format": "uc-cidr4"
+                        },
+                        "vrf": {
+                            "type": "number"
+                        }
+                    }
                 },
                 "gateway": {
-                    "type": "string",
-                    "format": "ipv4",
-                    "examples": [
-                        "192.168.1.1"
-                    ]
+                    "type": "object",
+                    "properties": {
+                        "prefix": {
+                            "type": "string",
+                            "format": "uc-cidr4"
+                        },
+                        "nexthop": {
+                            "type": "string",
+                            "format": "ipv4",
+                            "examples": [
+                                "192.168.1.1"
+                            ]
+                        },
+                        "vrf": {
+                            "type": "number"
+                        },
+                        "metric": {
+                            "type": "number"
+                        }
+                    }
+                },
+                "broadcast": {
+                    "type": "object",
+                    "properties": {
+                        "prefix": {
+                            "type": "string",
+                            "format": "uc-cidr4"
+                        },
+                        "vrf": {
+                            "type": "number"
+                        }
+                    }
                 },
                 "send-hostname": {
                     "type": "boolean",
