@@ -367,7 +367,12 @@
                         "protocol": {
                             "type": "string",
                             "enum": [
-                                "rstp"
+                                "none",
+                                "stp",
+                                "rstp",
+                                "mstp",
+                                "pvstp",
+                                "rpvstp"
                             ],
                             "default": "rstp"
                         },
@@ -379,6 +384,37 @@
                                     "upstream",
                                     "downstream"
                                 ]
+                            }
+                        }
+                    },
+                    "instances": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "enabled": {
+                                    "type": "boolean",
+                                    "default": true
+                                },
+                                "priority": {
+                                    "type": "integer",
+                                    "default": 32768
+                                },
+                                "forward_delay": {
+                                    "type": "integer",
+                                    "default": 15
+                                },
+                                "hellow_time": {
+                                    "type": "integer",
+                                    "default": 2
+                                },
+                                "max_age": {
+                                    "type": "integer",
+                                    "default": 20
+                                }
                             }
                         }
                     }
