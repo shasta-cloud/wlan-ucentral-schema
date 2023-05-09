@@ -81,23 +81,23 @@
                     "default": false
                 },
                 "poe": {
-                  "type": "object",
-                  "properties": {
-                    "power-management": {
-                      "type": "string",
-                      "examples": [
-                        "class",
-                        "dynamic",
-                        "dynamic-priority",
-                        "static",
-                        "static-priority"
-                      ]
-                    },
-                    "usage-threshold": {
-                      "type": "number",
-                      "default": 90
+                    "type": "object",
+                    "properties": {
+                        "power-management": {
+                            "type": "string",
+                            "examples": [
+                                "class",
+                                "dynamic",
+                                "dynamic-priority",
+                                "static",
+                                "static-priority"
+                            ]
+                        },
+                        "usage-threshold": {
+                            "type": "number",
+                            "default": 90
+                        }
                     }
-                  }
                 }
             }
         },
@@ -306,43 +306,45 @@
                     }
                 },
                 "poe": {
-                  "type": "object",
-                  "properties": {
-                    "admin-mode": {
-                      "type": "boolean",
-                      "default": false
-                    },
-                    "do-reset": {
-                      "type": "boolean"
-                    },
-                    "detection": {
-                      "type": "string",
-                      "examples": [
-                        "2pt-dot3af",
-                        "2pt-dot3af+legacy",
-                        "4pt-dot3af",
-                        "4pt-dot3af+legacy",
-                        "dot3bt",
-                        "dot3bt+legacy",
-                        "legacy"
-                      ],
-                      "default": "dot3bt"
-                    },
-                    "power-limit": {
-                      "type": "number"
-                    },
-                    "priority": {
-                      "type": "string",
-                      "examples": [
-                        "critical",
-                        "high",
-                        "medium",
-                        "low"
-                      ]
+                    "type": "object",
+                    "properties": {
+                        "admin-mode": {
+                            "type": "boolean",
+                            "default": false
+                        },
+                        "do-reset": {
+                            "type": "boolean"
+                        },
+                        "detection": {
+                            "type": "string",
+                            "examples": [
+                                "2pt-dot3af",
+                                "2pt-dot3af+legacy",
+                                "4pt-dot3af",
+                                "4pt-dot3af+legacy",
+                                "dot3bt",
+                                "dot3bt+legacy",
+                                "legacy"
+                            ],
+                            "default": "dot3bt"
+                        },
+                        "power-limit": {
+                            "type": "number",
+                            "default": 99900
+                        },
+                        "priority": {
+                            "type": "string",
+                            "default": "low",
+                            "examples": [
+                                "critical",
+                                "high",
+                                "medium",
+                                "low"
+                            ]
+                        }
                     }
-                 }
-              }
-           }
+                }
+            }
         },
         "switch": {
             "type": "object",
@@ -840,48 +842,66 @@
                     ]
                 },
                 "subnet": {
-                    "type": "object",
-                    "properties": {
-                        "prefix": {
-                            "type": "string",
-                            "format": "uc-cidr4"
-                        },
-                        "vrf": {
-                            "type": "number"
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "prefix": {
+                                "type": "string",
+                                "format": "uc-cidr4",
+                                "examples": [
+                                    "192.168.1.0/24"
+                                ]
+                            },
+                            "vrf": {
+                                "type": "number"
+                            }
                         }
                     }
                 },
                 "gateway": {
-                    "type": "object",
-                    "properties": {
-                        "prefix": {
-                            "type": "string",
-                            "format": "uc-cidr4"
-                        },
-                        "nexthop": {
-                            "type": "string",
-                            "format": "ipv4",
-                            "examples": [
-                                "192.168.1.1"
-                            ]
-                        },
-                        "vrf": {
-                            "type": "number"
-                        },
-                        "metric": {
-                            "type": "number"
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "prefix": {
+                                "type": "string",
+                                "format": "uc-cidr4",
+                                "examples": [
+                                    "192.168.1.0/24"
+                                ]
+                            },
+                            "nexthop": {
+                                "type": "string",
+                                "format": "ipv4",
+                                "examples": [
+                                    "192.168.1.1"
+                                ]
+                            },
+                            "vrf": {
+                                "type": "number"
+                            },
+                            "metric": {
+                                "type": "number"
+                            }
                         }
                     }
                 },
                 "broadcast": {
-                    "type": "object",
-                    "properties": {
-                        "prefix": {
-                            "type": "string",
-                            "format": "uc-cidr4"
-                        },
-                        "vrf": {
-                            "type": "number"
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "prefix": {
+                                "type": "string",
+                                "format": "uc-cidr4",
+                                "examples": [
+                                    "192.168.1.0/24"
+                                ]
+                            },
+                            "vrf": {
+                                "type": "number"
+                            }
                         }
                     }
                 },
