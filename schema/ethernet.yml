@@ -104,4 +104,43 @@ properties:
           - "high"
           - "medium"
           - "low"
-
+  ieee8021x:
+    description:
+      This section describes the per-port specific 802.1X (port access control) configuration.
+    type: object
+    properties:
+      is-authenticator:
+        description:
+          Configure PAE processing on port, as well as select this port as an Authenticator (configure PAC role to authenticator).
+          False configures the switch to not process PAC
+        type: boolean
+        default: false
+      authentication-mode:
+        description:
+          Configure PAE processing on port, as well as select this port as an Authenticator (configure PAC role to authenticator).
+          force-authorized - Disables IEEE 802.1X authentication and causes the port to change to the authorized state without any authentication exchange required.
+          The port sends and receives normal traffic without IEEE 802.1X-based authentication of the client.
+          force-unauthorized - Causes the port to remain in the unauthorized state, ignoring all attempts by the supplicant to authenticate.
+          The Device cannot provide authentication services to the supplicant through the port.
+          auto - Enables IEEE 802.1X authentication and causes the port to begin in the unauthorized state, allowing only EAPOL frames to be sent and received through the port.
+          The authentication process begins when the link state of the port changes from down to up or when an EAPOL-start frame is received. The Device requests the identity of the
+          supplicant and begins relaying authentication messages between the supplicant and the authentication server.
+          Each supplicant attempting to access the network is uniquely identified by the Device by using the supplicant MAC address.
+        type: string
+        enum:
+        - force-authorized
+        - force-unauthorized
+        - auto
+        default: force-authorized
+      guest-vlan:
+        description:
+          Configure a VLAN as a guest VLAN on an interface if the switch receives no response in an authentication event.
+        type: integer
+        minimum: 1
+        maximum: 4094
+      unauthenticated-vlan:
+        description:
+          Configure the unauthenticated VLAN to use when the AAA server fails to recognize the client credentials
+        type: integer
+        minimum: 1
+        maximum: 4094
