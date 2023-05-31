@@ -360,6 +360,16 @@
                             ],
                             "default": "force-authorized"
                         },
+                        "host-mode": {
+                            "type": "string",
+                            "enum": [
+                                "multi-auth",
+                                "multi-domain",
+                                "multi-host",
+                                "single-host"
+                            ],
+                            "default": "multi-auth"
+                        },
                         "guest-vlan": {
                             "type": "integer",
                             "minimum": 1,
