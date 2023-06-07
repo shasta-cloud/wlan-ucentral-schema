@@ -56,7 +56,6 @@ properties:
       status:
         description:
           Reports the operational status of poe-port's Power sourcing equipment.
-          For example:
           Searching option - the poe-port's PSE is trying to detect a Powered Device.
           Delivering option - the poe-port's PSE is delivering power to a Powered Device.
           Disabled option - the poe-port's PSE is either disabled or PoE power is enabled
