@@ -29,6 +29,8 @@ properties:
     - 2500
     - 5000
     - 10000
+    - 25000
+    - 100000
   duplex:
     description:
       The duplex mode that shall be forced.
