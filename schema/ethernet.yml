@@ -159,3 +159,47 @@ properties:
         type: integer
         minimum: 1
         maximum: 4094
+  port-isolation:
+    description:
+      This section describes the per-port specific port-isolation matrix (to which ports selected port can forward traffic to) configuration.
+      Omitting this configuration completely fully disables any port-isolation configuration on this given port.
+    type: object
+    properties:
+      session:
+        description:
+          Allow selected port to forward traffic in the provided session-based format.
+        type: array
+        items:
+          type: object
+          propertioes:
+            id:
+              description:
+                Session id to configure.
+              type: number
+            direction:
+              description:
+                Adds an interface to segmented group by setting direction to uplink or downlink
+              type: string
+              enum:
+              - uplink
+              - downlink
+            interface:
+              description:
+                Configure list interfaces.
+              type: object
+              properties:
+                interface-type:
+                  description:
+                    Configure list of ports or trunks.
+                  type: string
+                  enum:
+                  - port
+                  - trunk
+                range-start:
+                  description:
+                    Port (/trunk) range start
+                  type: number
+                range-end:
+                  description:
+                    Port (/trunk) range end.
+                  type: number
