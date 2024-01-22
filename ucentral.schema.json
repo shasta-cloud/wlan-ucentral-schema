@@ -98,6 +98,19 @@
                             "default": 90
                         }
                     }
+                },
+                "multicast": {
+                    "type": "object",
+                    "properties": {
+                        "igmp-snooping-enable": {
+                            "type": "boolean",
+                            "default": true
+                        },
+                        "mld-snooping-enable": {
+                            "type": "boolean",
+                            "default": true
+                        }
+                    }
                 }
             }
         },
@@ -383,6 +396,47 @@
                             "maximum": 4094
                         }
                     }
+                },
+                "port-isolation": {
+                    "type": "object",
+                    "properties": {
+                        "session": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "propertioes": {
+                                    "id": {
+                                        "type": "number"
+                                    },
+                                    "direction": {
+                                        "type": "string",
+                                        "enum": [
+                                            "uplink",
+                                            "downlink"
+                                        ]
+                                    },
+                                    "interface": {
+                                        "type": "object",
+                                        "properties": {
+                                            "interface-type": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "port",
+                                                    "trunk"
+                                                ]
+                                            },
+                                            "range-start": {
+                                                "type": "number"
+                                            },
+                                            "range-end": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         },
@@ -495,6 +549,52 @@
                                         "type": "integer",
                                         "maximum": 64,
                                         "minimum": 1
+                                    }
+                                }
+                            }
+                        },
+                        "dynamic-authorization": {
+                            "type": "object",
+                            "properties": {
+                                "auth-type": {
+                                    "type": "string",
+                                    "enum": [
+                                        "all",
+                                        "any",
+                                        "session-key"
+                                    ]
+                                },
+                                "bounce-port-ignore": {
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "disable-port-ignore": {
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "ignore-server-key": {
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "ignore-session-key": {
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "server-key": {
+                                    "type": "string"
+                                },
+                                "client": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "address": {
+                                                "type": "string"
+                                            },
+                                            "server-key": {
+                                                "type": "string"
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -981,6 +1081,60 @@
                             },
                             "vrf": {
                                 "type": "number"
+                            }
+                        }
+                    }
+                },
+                "multicast": {
+                    "type": "object",
+                    "properties": {
+                        "unknown-multicast-flood-control": null,
+                        "type": "boolean",
+                        "default": true,
+                        "igmp": {
+                            "type": "object",
+                            "properties": {
+                                "snooping-enable": {
+                                    "type": "boolean",
+                                    "default": true
+                                },
+                                "version": {
+                                    "type": "number",
+                                    "enum": [
+                                        1,
+                                        2,
+                                        3
+                                    ],
+                                    "examples": [
+                                        3
+                                    ],
+                                    "default": 3
+                                },
+                                "querier-enable": {
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "fast-leave-enable": {
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "query-interval": {
+                                    "type": "number",
+                                    "default": 1000
+                                },
+                                "last-member-query-interval": {
+                                    "type": "number",
+                                    "default": 1000
+                                },
+                                "max-response-time": {
+                                    "type": "number"
+                                },
+                                "static-mrouter-connction-iface": {
+                                    "type": "string",
+                                    "examples": [
+                                        "Ethernet10"
+                                    ]
+                                }
                             }
                         }
                     }
@@ -2288,6 +2442,9 @@
                 "password-authentication": {
                     "type": "boolean",
                     "default": true
+                },
+                "enable": {
+                    "type": "boolean"
                 }
             }
         },
@@ -2392,6 +2549,9 @@
                     "maximum": 65535,
                     "minimum": 1,
                     "default": 80
+                },
+                "enable": {
+                    "type": "boolean"
                 }
             }
         },
@@ -3200,6 +3360,14 @@
                 }
             }
         },
+        "service.telnet": {
+            "type": "object",
+            "properties": {
+                "enable": {
+                    "type": "boolean"
+                }
+            }
+        },
         "service": {
             "type": "object",
             "properties": {
@@ -3259,6 +3427,9 @@
                 },
                 "gps": {
                     "$ref": "#/$defs/service.gps"
+                },
+                "telnet": {
+                    "$ref": "#/$defs/service.telnet"
                 }
             }
         },
@@ -3280,6 +3451,9 @@
                             "tid-stats"
                         ]
                     }
+                },
+                "wired-clients-max-num": {
+                    "type": "number"
                 }
             }
         },
