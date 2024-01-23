@@ -1088,9 +1088,10 @@
                 "multicast": {
                     "type": "object",
                     "properties": {
-                        "unknown-multicast-flood-control": null,
-                        "type": "boolean",
-                        "default": true,
+                        "unknown-multicast-flood-control": {
+                            "type": "boolean",
+                            "default": true
+                        },
                         "igmp": {
                             "type": "object",
                             "properties": {

@@ -123,10 +123,10 @@ properties:
     type: object
     properties:
       unknown-multicast-flood-control:
-      description:
-        The unknown multicast flood control feature enables the system to forward unknown multicast packets only to a multicast router (mrouter).
-      type: boolean
-      default: true
+        description:
+          The unknown multicast flood control feature enables the system to forward unknown multicast packets only to a multicast router (mrouter).
+        type: boolean
+        default: true
       igmp:
         type: object
         properties:
